@@ -21,8 +21,7 @@ router.get('/:part', async (req, res, next) => {
     }
     try {
         const partMatch = await docClient.query(params).promise();
-        console.log(partMatch);
-        const randomMatch = partMatch.Items[Math.floor(Math.random() * 10) - 1];
+        const randomMatch = partMatch.Items[Math.floor(Math.random() * partMatch.Items.length)];
         res.send(randomMatch);
     } catch (error) {
         console.log(error);
@@ -43,7 +42,7 @@ router.get('/:part', async (req, res) => {
     }
     try {
         const partMatch = await docClient.query(params).promise();
-        const randomMatch = partMatch.Items[Math.floor(Math.random() * 10) - 1];
+        const randomMatch = partMatch.Items[Math.floor(Math.random() * partMatch.Items.length)];
         res.send(randomMatch);
     } catch (error) {
         console.log(error);
