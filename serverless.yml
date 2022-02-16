@@ -1,0 +1,14 @@
+service: dictionary
+provider:
+ name: aws
+ runtime: nodejs14.x
+ memorySize: 512
+ timeout: 5
+ stage: production
+ region: eu-west-1
+functions:
+ api:
+  handler: lambda.universal
+  events:
+    - http: ANY /{proxy+}
+    - http: ANY /

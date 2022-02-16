@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "deploy": "serverless deploy"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,10 @@
   "homepage": "https://github.com/EhoodGoren/dictionary#readme",
   "dependencies": {
     "aws-sdk": "^2.1061.0",
+    "aws-serverless-express": "^3.4.0",
     "cors": "^2.8.5",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "serverless": "^3.2.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
