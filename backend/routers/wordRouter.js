@@ -9,16 +9,17 @@ router.get('/:word/:partOfSpeech', async (req, res) => {
     const { word, partOfSpeech } = req.params;
     const params = {
         TableName: table,
-        Key: {
-            word,
-            "part_of_speech": partOfSpeech
-        }
-    };
+        KeyConditionExpression: "word = :w and begins_with(part_of_speech, :p)",
+        ExpressionAttributeValues: {
+            ":w": word,
+            ":p": partOfSpeech
+        },
+        Limit: 10
+    }
     try {
-        const wordMatch = await docClient.get(params).promise();
-        wordMatch.Item ? 
-            res.send(wordMatch.Item) :
-            res.status(404).send("Word doesn't exist");
+        const wordMatch = await docClient.query(params).promise();
+        const randomMatch = wordMatch.Items[Math.floor(Math.random() * wordMatch.Items.length)];
+        res.send(randomMatch);
     } catch (error) {
         console.log(error);
         res.status(500).send('Try again');
