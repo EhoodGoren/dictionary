@@ -1,6 +1,6 @@
 # Dictionary-backend
 
-This project is an Express.js app, which is the back-end of a dictionary project.
+This repository contains an Express.js app, which is the back-end of a dictionary project.
 
 You can check the deployment on AWS S3, at this URL:
 
